@@ -1,131 +1,68 @@
-.main-content,
-.main-content * {
-  box-sizing: border-box;
+/* about.html */
+
+body {
+  background: var(--page);
 }
+
 .main-content {
-  background: #eef6ff;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  min-height: 1032px;
-  position: relative;
+  justify-content: center;
+  background: var(--page);
 }
+
 .section-margin {
   display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
+  justify-content: center;
 }
+
 .section {
-  padding: 80px 20px 80px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 900px;
+  width: 100%;
   max-width: 900px;
-  position: relative;
+  padding: clamp(24px, 6vw, 80px) clamp(16px, 3vw, 20px);
 }
+
 .container {
-  background: #ffffff;
+  padding: clamp(28px, 6vw, 56px);
+  background: #fff;
   border-radius: 30px;
-  padding: 56px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  box-shadow: 0px 20px 70px 0px rgba(31, 70, 115, 0.12);
+  box-shadow: 0 20px 70px rgba(31, 70, 115, 0.12);
 }
-.paragraph {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
+
 .about-re-search {
   color: #3978c3;
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: 2.24px;
-  font-weight: 400;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  position: relative;
 }
+
 .heading-1-margin {
-  padding: 12px 0px 0px 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+  padding-top: 12px;
 }
-.heading-1 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
+
 .research-should-be-for-everyone {
-  color: #152d4e;
-  text-align: left;
-  font-family: "Inter-Bold", sans-serif;
-  font-size: 48px;
-  line-height: 48px;
-  letter-spacing: -1.92px;
+  color: var(--ink-strong);
   font-weight: 700;
-  position: relative;
-  width: 748px;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
+
 .paragraph-margin {
-  padding: 24px 0px 0px 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+  padding-top: 24px;
 }
-.paragraph2 {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
+
 .re-search-helps-students-and-early-career-researche {
   color: #526880;
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 18px;
-  line-height: 32px;
-  font-weight: 400;
-  position: relative;
-  width: 748px;
+  font-size: clamp(16px, 2.4vw, 18px);
+  line-height: 1.8;
+}
+
+@media (max-width: 560px) {
+  .container {
+    border-radius: 22px;
+  }
 }
