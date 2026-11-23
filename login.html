@@ -2,119 +2,360 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vars.css">
-  <link rel="stylesheet" href="./login.css">
-  
-  
+  <title>Log In · ReSEARCH</title>
   <style>
-   a,
-   button,
-   input,
-   select,
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   * {
-       box-sizing: border-box;
-       margin: 0;
-       padding: 0;
-       border: none;
-       text-decoration: none;
-       background: none;
-   
-       -webkit-font-smoothing: antialiased;
-   }
-   
-   menu, ol, ul {
-       list-style-type: none;
-       margin: 0;
-       padding: 0;
-   }
-   </style>
-  <title>Document</title>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #6da5f7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Ring Accents */
+    .bg-ring-1 {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border: 45px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      top: -60px;
+      left: 30%;
+      pointer-events: none;
+    }
+
+    .bg-ring-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 45px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      bottom: -180px;
+      left: 12%;
+      pointer-events: none;
+    }
+
+    /* Page Layout Container */
+    .main-container {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      min-height: 100vh;
+      padding: 60px 40px;
+      z-index: 1;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Left Side Content */
+    .left-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 520px;
+      color: #ffffff;
+      padding-right: 20px;
+    }
+
+    /* Logo Styling - Magnifying Glass updated to match screenshot */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      font-size: 54px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 110px;
+    }
+
+    .magnifier-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: -4px;
+    }
+
+    .magnifier-lens {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.85) 0%, rgba(200, 225, 255, 0.6) 70%, rgba(165, 195, 245, 0.5) 100%);
+      border: 4px solid #cbd7e8;
+      border-radius: 50%;
+      color: #1a222e;
+      font-size: 40px;
+      font-weight: 800;
+      z-index: 2;
+      box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.9), 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Top-left glass reflection highlight curved arc */
+    .magnifier-lens::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 10px;
+      width: 48px;
+      height: 24px;
+      border-radius: 50% 50% 0 0;
+      border-top: 3.5px solid rgba(255, 255, 255, 0.95);
+      transform: rotate(-35deg);
+      pointer-events: none;
+    }
+
+    /* Dark thick handle pointing down-right */
+    .magnifier-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 42px;
+      height: 16px;
+      background: #252d3a;
+      border-radius: 8px;
+      bottom: 2px;
+      right: -22px;
+      transform: rotate(30deg);
+      z-index: 1;
+    }
+
+    .logo-text-white {
+      color: #ffffff;
+      font-weight: 800;
+      z-index: 3;
+    }
+
+    /* Hero Text */
+    .hero-heading {
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-subheading {
+      font-size: 16px;
+      line-height: 1.45;
+      opacity: 0.92;
+      font-weight: 400;
+    }
+
+    /* Right Side - Tablet Frame Container */
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .device-card-frame {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 440px;
+      border: 8px solid #000000;
+      border-radius: 36px;
+      padding: 44px 36px 36px 36px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* User Profile Icon Badge */
+    .user-icon-container {
+      width: 62px;
+      height: 62px;
+      background-color: #5596e6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .user-icon-container svg {
+      width: 30px;
+      height: 30px;
+      stroke: #ffffff;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Card Headings */
+    .card-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .card-subtitle {
+      font-size: 13.5px;
+      color: #6b7280;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    /* Form Fields */
+    .auth-form {
+      width: 100%;
+    }
+
+    .field-group {
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 14px;
+      border: 1.5px solid #7cb0f8;
+      border-radius: 8px;
+      outline: none;
+      color: #111827;
+      background-color: #ffffff;
+    }
+
+    .form-input::placeholder {
+      color: #9ca3af;
+    }
+
+    .form-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    /* Log In Button */
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #285fb7;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background-color 0.2s;
+    }
+
+    .submit-button:hover {
+      background-color: #1e4ea1;
+    }
+
+    /* Card Footer Link */
+    .form-footer-text {
+      margin-top: 20px;
+      font-size: 12.5px;
+      color: #4b5563;
+      text-align: center;
+    }
+
+    .form-footer-text a {
+      color: #285fb7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .form-footer-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <div class="research-opportunities-site-login">
-    <div class="main-content">
-      <div class="section">
-        <img
-          class="re-search-website-design-1-removebg-preview-1"
-          src="re-search-website-design-1-removebg-preview-10.png"
-        />
-        <div class="placeholder-for-container"></div>
-        <div class="container"></div>
-        <div class="container2"></div>
-        <div class="container3">
-          <div class="paragraph"></div>
-          <div class="heading-1">
-            <div class="find-the-people-and-places-that-move-your-ideas-fo">
-              Find the perfect place for your research project
-            </div>
-          </div>
-          <div class="paragraph-margin">
-            <div class="explore-nearby-institutions-discover-potential-me">
-              Discover potential mentors and facilities for your very own research
-              project
-            </div>
-          </div>
+
+  <!-- Background Rings -->
+  <div class="bg-ring-1"></div>
+  <div class="bg-ring-2"></div>
+
+  <div class="main-container">
+    <!-- Left Section -->
+    <div class="left-section">
+      <div class="brand-logo">
+        <div class="magnifier-wrapper">
+          <div class="magnifier-lens">Re</div>
         </div>
+        <span class="logo-text-white">SEARCH</span>
       </div>
-      <div class="section2">
-        <div class="container4">
-          <div class="container-margin">
-            <div class="container5">
-              <img class="icon" src="icon0.svg" />
-            </div>
+
+      <div class="hero-content">
+        <h1 class="hero-heading">Find the perfect<br>place for your<br>research project</h1>
+        <p class="hero-subheading">Discover potential mentors and facilities for your very own research project</p>
+      </div>
+    </div>
+
+    <!-- Right Section (Device Frame Card) -->
+    <div class="right-section">
+      <div class="device-card-frame">
+        <!-- User Badge -->
+        <div class="user-icon-container">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+
+        <h2 class="card-title">Log In</h2>
+        <p class="card-subtitle">Welcome back to your research workspace.</p>
+
+        <!-- Functional Form -->
+        <form class="auth-form" action="#" method="POST">
+          <div class="field-group">
+            <label for="email" class="field-label">Email address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="you@example.edu" 
+              required
+            >
           </div>
-          <div class="heading-2">
-            <div class="log-in">Log In</div>
+
+          <div class="field-group">
+            <label for="password" class="field-label">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input" 
+              placeholder="Your password" 
+              required
+            >
           </div>
-          <div class="paragraph2">
-            <div class="welcome-back-to-your-research-workspace">
-              Welcome back to your research workspace.
-            </div>
-          </div>
-          <div class="auth-form">
-            <div class="label">
-              <div class="email-address">Email address</div>
-              <div class="email-input">
-                <div class="you-example-edu">you@example.edu</div>
-              </div>
-            </div>
-            <div class="label-margin">
-              <div class="label">
-                <div class="password">Password</div>
-                <div class="password-input">
-                  <div class="your-password">Your password</div>
-                </div>
-              </div>
-            </div>
-            <div class="container6">
-              <div class="button">
-                <div class="log-in2">Log In</div>
-              </div>
-            </div>
-            <div class="paragraph3">
-              <div class="new-to-re-search-create-an-account">
-                <span>
-                  <span class="new-to-re-search-create-an-account-span">
-                    New to ReSEARCH?
-                  </span>
-                  <span class="new-to-re-search-create-an-account-span2">
-                    Create an account
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
+
+          <button type="submit" class="submit-button">Log In</button>
+        </form>
+
+        <div class="form-footer-text">
+          New to ReSEARCH? <a href="#">Create an account</a>
         </div>
       </div>
     </div>
   </div>
-  
+
 </body>
 </html>
